@@ -3,13 +3,41 @@
 <head>
   <title>Angular Cash Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Cash Register!</h1>
+    </header>
+    <div class="buttons row" ng-controller="orderController" >
+      <a class="waves-effect waves-light btn" ng-click="addToOrder(item)" ng-repeat="item in menu">{{item.name}} - {{item.price}}</a>
+    </div>
+    <div class="row" ng-controller="recieptController">
+      <div class="col s12 m6">
+        <div class="card-panel teal order">
+          <h3 class="white-text">Order</h3>
+          <ul ng-repeat="item in inOrder track by $index">
+            <li class="white-text">{{item.name}} x{{item.count}} {{item.price}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card-panel teal totals">
+          <h4 class="white-text">Tax: {{tax | currency}}</h4>
+          <h4 class="white-text">Total: {{total | currency}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Your code here  -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="app.js"></script>
   <script src="controllers.js"></script>
 </body>
 </html>
